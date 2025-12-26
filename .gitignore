@@ -1,0 +1,17 @@
+# Python artifacts
+__pycache__/
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE & editor files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+!data/preprocessed/
+!data/preprocessed/*.csv
