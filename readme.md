@@ -64,12 +64,6 @@ Open the URL printed by Streamlit (usually `http://localhost:8501`) in your brow
 ## Running the scraper
 - `data_scraping/scraper.py` uses Selenium and `undetected_chromedriver` to scrape `batdongsan.com.vn`. Scraping requires a compatible Chrome and the `undetected-chromedriver` package; consult the notebook and `scraper.py` for configuration constants (page ranges, delays). Be mindful of site terms-of-service and polite scraping practices.
 
-## Development tips
-- To make model deployment robust:
-    - Save models as `joblib`-serialized `Pipeline` objects that encapsulate preprocessing.
-    - Persist metadata (feature list, target transform, training date, metrics) alongside the model.
-    - Keep dependency versions consistent (use `requirements.txt` or `environment.yml`). The repository includes `requirements.txt` but you may pin exact versions for reproducibility.
-
 ## Troubleshooting
 - If Streamlit reports missing dataset: verify `DATA_PATH` in `streamlit_app.py` or regenerate preprocessed files.
 - If prediction fails due to mismatched feature names: ensure your saved model's expected features are present in the preprocessed dataset or save a Pipeline that includes feature engineering.
