@@ -12,7 +12,7 @@ DEFAULT_MODEL = "modelling/model_gridsearch.pkl"
 
 
 @st.cache_data
-def load_data(path=DATA_PATH):
+def load_data(path = DATA_PATH):
     try:
         df = pd.read_csv(path)
     except FileNotFoundError:
@@ -132,7 +132,7 @@ def prepare_features(estimator, df, feature_names):
 
 def main():
     st.set_page_config(layout="wide", page_title="Real Estate Explorer")
-    st.title("Real Estate Explorer — Streamlit Visualizer")
+    st.title("Vietnamese Real Estate")
 
     st.markdown(
         """
@@ -172,7 +172,7 @@ def main():
         area_range = None
 
     # Price slider (use price_per_m2 if available else price)
-    price_col = "price_per_m2" if "price_per_m2" in df.columns else "price"
+    price_col = "price" if "price" in df.columns else "price"
     if price_col in df.columns:
         p_min = float(np.nanmin(df[price_col])) if df[price_col].notna().any() else 0.0
         p_max = float(np.nanmax(df[price_col])) if df[price_col].notna().any() else 1.0
@@ -188,7 +188,7 @@ def main():
         df_filtered = df_filtered[df_filtered["property_type"].isin(selected_types)]
     if area_range and "area" in df_filtered.columns:
         df_filtered = df_filtered[(df_filtered["area"] >= area_range[0]) & (df_filtered["area"] <= area_range[1])]
-    if price_range and price_col in df_filtered.columns:
+    if price_range and "price" in df_filtered.columns:
         df_filtered = df_filtered[(df_filtered[price_col] >= price_range[0]) & (df_filtered[price_col] <= price_range[1])]
 
     st.sidebar.markdown(f"**Results:** {len(df_filtered):,} rows")
